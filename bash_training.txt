@@ -1,0 +1,170 @@
+Hello.
+
+This is an introduction to Bash
+
+Any line beginning with '$' is a bash command.
+
+For example, try typing:
+
+
+$ gedit bash_tutorial.txt &
+
+
+This calls the program 'gedit' (a text editor) with the augment 'bash_tutorial.txt'
+
+You should now be reading this inside gedit.
+
+The commands you typed in at the start of this session was this:
+
+
+$ wget https://someaddress.com/docs/bash_tutorial.txt
+$ head bash_tutorial.txt
+
+
+These commands do two things.;
+-wget; gets a resource from the Internet. In this case, this document, but it can be anything: a program, a webpage, or a satellite image.
+-head: Prints out the first 10 lines of a file; in this case, bash_tutorial.txt
+
+The basic bash commands are these:
+
+$ pwd
+
+This stands for 'present working directory'. This tells you where you are in the filesystem.
+
+$ ls
+
+Short for 'list'. This tells you what files are where you are
+
+$ cd some/path
+
+Short for 'change directory'. This moves you to a different place.
+
+$ cd ..
+
+will move you up one directory.
+
+$ mkdir my_directory
+
+This creates a new directory, called (in this case) new_directory.
+
+
+EXERCISE: 
+You are in your home directory right now; the Linux shorthand for this is '~'.
+Find out what ~ is short for (it might be different on every machine)
+
+A Unix machine has a 'root'. This is the absolute bottom of the directory structure.
+You can reach it with
+
+$ cd /
+
+Paths in Unix have two types:
+
+Absolute:
+Starts with a '/'
+This is a path from the root of the directory structure; /home/john/pyeo/pyeo/core.py
+
+Relative:
+Does not start with a '/'
+This is the path from your 'present working directory'; pyeo/pyeo/core.py
+
+
+Now you know the basics, it's time to set up our environment for Pyeo.
+
+We will need four programs for a full Pyeo installation:
+-Git
+-Pyeo itself
+-Conda and the python environment
+-Sen2Cor
+
+
+***Installing Git and getting the Pyeo code***
+
+This is easy.
+
+$ sudo apt get install git
+
+This command will download, install and set up Git on your machine.
+It may ask for your password.
+
+'sudo apt get install' is a command on Ubuntu for installing programs.
+It is not the only way, but it often the easiest.
+
+
+EXERCISE: Using apt, install the gis package 'qgis'
+
+EXERCISE: Using what we covered in Friday's session, use Git to clone Pyeo to the machine you are using.
+
+
+***Installing Conda and creating an environment***
+
+Conda is not available on apt. Instead, you must get it using wget:
+
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ bash Miniconda3-latest-Linux-x86_64.sh
+
+After running the above commands, you will need to restart your terminal.
+
+Now you have conda, you can create to environment used for Pyeo. 
+
+$ cd 
+
+to the folder you cloned Pyeo into.
+
+Now, you can run this command:
+
+$ conda env create --name pyeo_env --file environment.yml
+
+This will download everything you need to run Pyeo, except Sen2Cor.
+
+Once done, you can activate this environment with
+
+$ conda actiavte pyeo_env
+
+You will need to do this before working with Pyeo; you prompt should now say (pyeo_env)
+
+
+***Installing Sen2Cor***
+
+This is very similar to installing Conda:
+
+$ wget http://step.esa.int/thirdparties/sen2cor/2.5.5/Sen2Cor-02.05.05-Linux64.run
+$ bash Sen2Cor-02.05.05-Linux64.run
+
+If you check your directory, you should see a folder called 'Sen2Cor-02.05.05'
+
+
+***Final step***
+
+You now have a system ready to download and preprocess images. To test this, try the following (with pyeo_env active):
+
+$ cd pyeo/pyeo/apps/change_detection
+$ python rolling_composite_s2_change_detection.py 
+
+If you see something like this:
+
+usage: rolling_composite_s2_change_detection.py [-h] [--start_date START_DATE]
+                                                [--end_date END_DATE] [-b]
+                                                [--chunks NUM_CHUNKS] [-d]
+                                                [-p] [-m] [-a] [-s] [-c] [-u]
+                                                [-r]
+                                                config_path
+
+...then you are ready.You have in
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
