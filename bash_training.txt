@@ -149,7 +149,7 @@ usage: rolling_composite_s2_change_detection.py [-h] [--start_date START_DATE]
                                                 [-r]
                                                 config_path
 
-...then you are ready.You have in
+...then you are ready.
 
 
 
