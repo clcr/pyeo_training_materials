@@ -16,6 +16,7 @@ cd pyeo
 conda env create --file environment.yml --name pyeo_env
 conda activate pyeo_env
 python -m pip install -e . -vv
+conda install -c conda-forge jupyter notebook
 ```
 
 To use this notebook:
